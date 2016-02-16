@@ -1,6 +1,6 @@
 import os
 import sys
-import View,Model
+import View, Model
 
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtWidgets import QWidget
@@ -19,17 +19,14 @@ class Controller(QWidget):
     def connect_button(self):
         self.button.clicked.connect(self.button_listener)
 
-
     def button_listener(self):
         filename = self.form.lineEdit.text()
-        if os.path.isfile(filename) and filename.endswith(".csv"):
-            self.text = self.model.readcsv(filename)
-            self.update()
-        else:
-            self.form.textBrowser.setText("The given Name is no valid csv file")
+        self.text = self.model.readcsv(filename)
+        self.update()
 
     def update(self):
         self.form.textBrowser.setText(self.text)
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
