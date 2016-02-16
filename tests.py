@@ -17,3 +17,19 @@ class Test(unittest.TestCase):
     def test_file_doesnt_end_with_csv(self):
         csvstring = self.model.readcsv("123.exe")
         self.assertEqual(csvstring, "The given Name is no valid csv file")
+
+    def test_file_doesnt_end_with_anything(self):
+        csvstring = self.model.readcsv("123")
+        self.assertEqual(csvstring, "The given Name is no valid csv file")
+
+
+    def test_file_doesnt_exist_but_ends_with_csv(self):
+        csvstring = self.model.readcsv("Book.csv")
+        self.assertEqual(csvstring, "The given Name is no valid csv file")
+
+    def test_Hello_World(self):
+        """
+        Check if Tests work ;)
+        :return:
+        """
+        self.assertEqual("Hello World","Hello World")
